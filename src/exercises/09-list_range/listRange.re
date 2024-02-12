@@ -16,8 +16,13 @@ let () = {
 
   let range: (int, int) => list(int)
  */
-let rec range = (from, to_) => failwith("For you to implement");
-
+let rec range = (from, to_) => 
+  if (from >= to_) {
+    []
+  } else {
+    [from, ...range(from + 1, to_)]
+  };
+  
 Test.runAll([
   (range(1, 4) == [1, 2, 3], "range"),
   (range(-5, 3) == [(-5), (-4), (-3), (-2), (-1), 0, 1, 2], "range"),
